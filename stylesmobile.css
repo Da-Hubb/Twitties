@@ -202,7 +202,7 @@ body {
     width: 25%;
     text-align: right;
     height: inherit;
-    display: block
+    overflow: hidden;
 }
 
 .day_date {
@@ -210,9 +210,11 @@ body {
     font-size: 13px;
 }
 
-.today {
-    font-family: --light;
+.currenttime {
     font-size: 11px;
+    font-family: var(--light);
+    color: red;
+    font-weight: 500;
 }
 
 
