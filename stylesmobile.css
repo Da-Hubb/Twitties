@@ -155,7 +155,7 @@ body {
     background-color: var(--ldark);
     width: 0;
     height: 0;
-    transition: 2s;
+    transition: .2s;
     overflow: hidden;
 }
 
@@ -193,6 +193,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 5px 3px;
+    height: 30px;
+    transition: 5s;
 }
 
 .community {
@@ -243,8 +245,39 @@ body {
 } */
 
 .display_msg {
-    min-height: 300px;
+    min-height: 500px;
+    position: relative;
 }
+
+.page {
+    min-height: 500px;
+    width: 100%;
+    position: absolute;
+    transform: translate(50%, 0);
+}
+
+/* comuunities styling starts here*/
+.communities {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    font-family: var(--bold);
+}
+
+.comm_title {
+    font-size: 7vw;
+}
+
+.comm_detail {
+    white-space: normal;
+    text-align: center;
+    width: 90vw;
+    font-family: var(--regular);
+    font-size: 14px;
+}
+
+/* communities styling ends here */
 
 
 .dm {
@@ -338,6 +371,11 @@ body {
 }
 
 /* classes to be added */
+.active {
+    color: greenyellow;
+    border-bottom: 1px solid greenyellow;
+}
+
 .display {
     display: none;
 }

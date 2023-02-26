@@ -14,8 +14,48 @@ const menunav = document.querySelector(".menunav");
 
 const firstmenu = document.querySelectorAll(".firstmenu");
 
+const pages = document.querySelectorAll(".page");
+let pagetranslate = 0;
+
+// adding active class to know page i am on
+const subs = document.querySelectorAll(".sub");
+
+subs.forEach(sub => {
+    sub.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        subs.forEach(allsub => {
+            allsub.classList.remove("active");
+        })
+
+        e.currentTarget.classList.add("active");
+
+        if (subs[1].classList.contains("active")){
+            pagetranslate = -100;
+            pages.forEach(page => {
+                page.style.transform = `translate(${pagetranslate}%)`;
+                pagetranslate += 100;
+            })
+        }
+         
+        if (subs[2].classList.contains("acitve")){
+            pagetranslate = -200;
+            pages.forEach(page => {
+                page.style.transform = `translate(${pagetranslate}%)`;
+                pagetranslate += 100;
+            })
+        }
+    })
+})
+
 // function loadContact
 const loadContact = () => {
+
+    pages.forEach(page => {
+        page.style.transform = `translate(${pagetranslate}%)`;
+        pagetranslate += 100;
+    })
+
     displayContacts = contact.map(item => {
         return `
         <div class="dm">
@@ -42,7 +82,6 @@ const loadContact = () => {
     
     displayContacts = displayContacts.join("");
     
-    
     // looping it to make them many enough for this project
     let conNum = 0;
     
@@ -54,11 +93,13 @@ const loadContact = () => {
 
 // fucntion scrooling
 const scrooling = () => {
+
     let pageY = window.pageYOffset;
     let heroHeight = hero.getBoundingClientRect().height;
     
     pageY > heroHeight ? subherohold.classList.add("glue") : subherohold.classList.remove("glue");
-    
+
+    hidemenu();
 }
 
 
@@ -96,6 +137,7 @@ window.addEventListener("load", () => {
     }, 4000)
 })
 
+// this will display the menu navigation zone on click
 lastConnect.addEventListener("click", () => {
     let num = 0;
     let height;
@@ -111,9 +153,9 @@ lastConnect.addEventListener("click", () => {
     menunav.classList.add("showmenunav");
 })
 
+
 message.addEventListener("click", () => {
-    menunav.classList.remove("showmenunav");
-    menunav.style.height = `0px`;
+   hidemenu();
 })
 
 openAdd.addEventListener("click", () => {
@@ -122,4 +164,11 @@ openAdd.addEventListener("click", () => {
     receipt.classList.toggle("three");
     clock.classList.toggle("four");
     chat.classList.toggle("five");
+    hidemenu();
 })
+
+// fucntion to remove showmenu nav
+const hidemenu = () => {
+    menunav.classList.remove("showmenunav");
+    menunav.style.height = `0px`;
+}
