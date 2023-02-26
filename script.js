@@ -1,25 +1,11 @@
-// for contacts on phone
-const contact = [
-    {
-        profile_pic: "assets/stephanie.png",
-        contact_name: "Stephanie"
-    },
-    {
-        profile_pic: "assets/richard.png",
-        contact_name: "Richard"
-    },
-    {
-        profile_pic: "assets/isabella.png",
-        contact_name: "Isabella"
-    },
-    {
-        profile_pic: "assets/anisha.png",
-        contact_name: "Anisha"
-    }
-]
-
-// the contacts to be displayed in the message section
-const message = document.querySelector(".messages");
+const openAdd = document.querySelector(".open");
+const paint = document.querySelector(".paint");
+const receipt = document.querySelector(".receipt");
+const clock = document.querySelector(".clock");
+const chat = document.querySelector(".chat");
+const subherohold = document.querySelector(".subherohold");
+const hero = document.querySelector(".hero");
+const overlay = document.querySelector(".overlay");
 
 // function loadContact
 const loadContact = () => {
@@ -59,16 +45,52 @@ const loadContact = () => {
     }
 }
 
+// fucntion scrooling
+const scrooling = () => {
+    let pageY = window.pageYOffset;
+    let heroHeight = hero.getBoundingClientRect().height;
+    
+    pageY > heroHeight ? subherohold.classList.add("glue") : subherohold.classList.remove("glue");
+}
+
+
+
+// for contacts on phone
+const contact = [
+    {
+        profile_pic: "assets/stephanie.png",
+        contact_name: "Stephanie"
+    },
+    {
+        profile_pic: "assets/richard.png",
+        contact_name: "Richard"
+    },
+    {
+        profile_pic: "assets/isabella.png",
+        contact_name: "Isabella"
+    },
+    {
+        profile_pic: "assets/anisha.png",
+        contact_name: "Anisha"
+    }
+]
+
+// the contacts to be displayed in the message section
+const message = document.querySelector(".messages");
+
+
 window.addEventListener("DOMContentLoaded", loadContact);
 
+window.addEventListener("scroll", scrooling);
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        overlay.classList.add("display");
+    }, 4000)
+})
 
-const openAdd = document.querySelector(".open");
-const paint = document.querySelector(".paint");
-const receipt = document.querySelector(".receipt");
-const clock = document.querySelector(".clock");
-const chat = document.querySelector(".chat");
 
 openAdd.addEventListener("click", () => {
+    openAdd.classList.toggle("rotate");
     paint.classList.toggle("two");
     receipt.classList.toggle("three");
     clock.classList.toggle("four");

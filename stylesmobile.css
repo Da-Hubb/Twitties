@@ -39,9 +39,68 @@ html {
 }
 
 body {
-    background-color: var(--ddark);
+    background: url(assets/load_bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
     width: 100%;
     min-height: 100vh;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 5;
+    background-color: var(--ldark);
+    width: inherit;
+    min-height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--bold);
+}
+
+.overlay_head {
+    font-size: 20vw;
+    animation: intro ease-in-out 2s forwards;
+    text-shadow: 0 10px 5px rgb(114, 103, 103);
+}
+
+.creator {
+    margin-top: 250px;
+}
+
+.producer a {
+    text-decoration: none;
+    color: white;
+    font-family: var(--regular);
+}
+/* animation for the head of the overlay */
+@keyframes intro {
+    0% {
+        transform: scale(5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    80% {
+        transform: rotate(20deg);
+    }
+
+    90% {
+        transform: rotate(-20deg)
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
 }
 
 .superhero, .hero, .connectivities, .subhero {
@@ -56,10 +115,10 @@ body {
 .hero, .subhero {
     width: 100%;
     font-family: var(--bold);
-    background-color: var(--ldark);
 }
 
 .hero {
+    background-color: var(--ldark);
     justify-content: space-between;
     padding: 10px;
 }
@@ -89,6 +148,12 @@ body {
 
 .subhero {
     justify-content: space-between;
+}
+
+.subherohold {
+    width: 100%;
+    transition: .3s ease-out;
+    background-color: var(--ldark);
 }
 
 .sub {
@@ -225,8 +290,8 @@ body {
     background-color: var(--grin);
     display: grid;
     place-items: center;
-    position: absolute;
-    right: 50px;
+    position: fixed;
+    right: 20px;
     bottom: 20px;
     transition: .5s;
 }
@@ -237,8 +302,22 @@ body {
 
 .open {
     z-index: 2;
+    background-color: var(--offwhite);
 }
+
 /* classes to be added */
+.display {
+    display: none;
+}
+.glue {
+    position: fixed;
+    z-index: 2;
+    background-color: rgb(45, 73, 100);
+}
+
+.rotate {
+    transform: rotate(360deg);
+}
 .two {
     transform: translateY(-110%);
 }

@@ -12,6 +12,18 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- the display before content load -->
+    <div class="overlay">
+        <h1 class="overlay_head">Twitties</h1>
+        <small class="creator">
+            <p class="producer">
+                <a href="mailto: josemariaofurm@gmail.com" target="_blank">
+                    Da-Hubb
+                </a>
+            </p>
+        </small>
+    </div>
+
     <!-- the header -->
     <header class="superhero">
         <!-- hero -->
@@ -47,34 +59,37 @@
         </section>
 
         <!-- subhero -->
-        <section class="subhero">
-            <div class="community sub">
-                <img loading="eager" src="assets/icons8-people-100.png" alt="community">
+        <div class="subherohold">
+            
+            <section class="subhero">
+                <div class="community sub">
+                    <img loading="eager" src="assets/icons8-people-100.png" alt="community">
+                </div>
+    
+                <div class="sub text-sub">
+                    <h3 class="sub-title">Chats</h3>
+                    <span class="num_of_msg">3</span>
+                </div>
+    
+                <div class="sub text-sub">
+                    <h3 class="sub-title">Groups</h3>
+                    <span class="num_of_msg">3</span>
+                </div>
+    
+                <div class="sub text-sub">
+                    <h3 class="sub-title">Status</h3>
+                    <span class="num_of_msg">3</span>
+                </div>
+    
+                <div class="sub text-sub">
+                    <h3 class="sub-title">Calls</h3>
+                    <span class="num_of_msg">3</span>
+                </div>
+            </section>
+    
+            <div class="currentpage">
+                <div class="line"></div>
             </div>
-
-            <div class="sub text-sub">
-                <h3 class="sub-title">Chats</h3>
-                <span class="num_of_msg">3</span>
-            </div>
-
-            <div class="sub text-sub">
-                <h3 class="sub-title">Groups</h3>
-                <span class="num_of_msg">3</span>
-            </div>
-
-            <div class="sub text-sub">
-                <h3 class="sub-title">Status</h3>
-                <span class="num_of_msg">3</span>
-            </div>
-
-            <div class="sub text-sub">
-                <h3 class="sub-title">Calls</h3>
-                <span class="num_of_msg">3</span>
-            </div>
-        </section>
-
-        <div class="currentpage">
-            <div class="line"></div>
         </div>
     </header>
 
@@ -111,7 +126,7 @@
 
     <!-- create the add buttons -->
     <section class="add_on">
-        <div class="add open"><img src="" alt=""></div>
+        <div class="add open"><img src="assets/setting.svg" alt="setting"></div>
         <div class="add paint"><img src="assets/icons8-paint-brush-100.png" alt=""></div>
         <div class="add receipt"><img src="assets/icons8-activity-history-100.png" alt=""></div>
         <div class="add clock"><img src="assets/icons8-alarm-clock-80.png" alt=""></div>
