@@ -146,6 +146,38 @@ body {
     width: 60%;
 }
 
+/* this is for the first menu */
+.menunav {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    top: 0;
+    background-color: var(--ldark);
+    width: 0;
+    height: 0;
+    transition: 2s;
+    overflow: hidden;
+}
+
+.showmenunav {
+    width: 50%;
+}
+
+.links {
+    list-style: none;
+    font-family: var(--regular);
+    color: white;
+}
+
+.links li {
+    padding:10px;
+    transition: .3s;
+}
+
+.links li:active {
+    background-color: var(--trans);
+}
+
 .subhero {
     justify-content: space-between;
 }
@@ -309,6 +341,7 @@ body {
 .display {
     display: none;
 }
+
 .glue {
     position: fixed;
     z-index: 2;

@@ -7,6 +7,13 @@ const subherohold = document.querySelector(".subherohold");
 const hero = document.querySelector(".hero");
 const overlay = document.querySelector(".overlay");
 
+const connect = document.querySelectorAll(".connect");
+const lastConnect = connect[connect.length - 1];
+
+const menunav = document.querySelector(".menunav");
+
+const firstmenu = document.querySelectorAll(".firstmenu");
+
 // function loadContact
 const loadContact = () => {
     displayContacts = contact.map(item => {
@@ -51,6 +58,7 @@ const scrooling = () => {
     let heroHeight = hero.getBoundingClientRect().height;
     
     pageY > heroHeight ? subherohold.classList.add("glue") : subherohold.classList.remove("glue");
+    
 }
 
 
@@ -88,6 +96,25 @@ window.addEventListener("load", () => {
     }, 4000)
 })
 
+lastConnect.addEventListener("click", () => {
+    let num = 0;
+    let height;
+    let menuheight = menunav.getBoundingClientRect().height;
+
+    firstmenu.forEach(link => {
+        height = link.getBoundingClientRect().height;
+        num += height;
+    })
+
+    menuheight == 0 ? menunav.style.height = `${num}px`: menunav.style.height = `0px`;
+
+    menunav.classList.add("showmenunav");
+})
+
+message.addEventListener("click", () => {
+    menunav.classList.remove("showmenunav");
+    menunav.style.height = `0px`;
+})
 
 openAdd.addEventListener("click", () => {
     openAdd.classList.toggle("rotate");
