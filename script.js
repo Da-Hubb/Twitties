@@ -38,13 +38,6 @@ subs.forEach(sub => {
             })
         }
          
-        if (subs[2].classList.contains("acitve")){
-            pagetranslate = -200;
-            pages.forEach(page => {
-                page.style.transform = `translate(${pagetranslate}%)`;
-                pagetranslate += 100;
-            })
-        }
     })
 })
 

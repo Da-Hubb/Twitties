@@ -46,6 +46,7 @@ body {
     background-attachment: fixed;
     width: 100%;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .overlay {
@@ -78,6 +79,7 @@ body {
     color: white;
     font-family: var(--regular);
 }
+
 /* animation for the head of the overlay */
 @keyframes intro {
     0% {
@@ -247,6 +249,7 @@ body {
 .display_msg {
     min-height: 500px;
     position: relative;
+    overflow: hidden;
 }
 
 .page {
