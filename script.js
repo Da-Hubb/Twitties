@@ -1,3 +1,67 @@
+// for contacts on phone
+const contact = [
+    {
+        profile_pic: "assets/stephanie.png",
+        contact_name: "Stephanie"
+    },
+    {
+        profile_pic: "assets/richard.png",
+        contact_name: "Richard"
+    },
+    {
+        profile_pic: "assets/isabella.png",
+        contact_name: "Isabella"
+    },
+    {
+        profile_pic: "assets/anisha.png",
+        contact_name: "Anisha"
+    }
+]
+
+// the contacts to be displayed in the message section
+const message = document.querySelector(".messages");
+
+// function loadContact
+const loadContact = () => {
+    displayContacts = contact.map(item => {
+        return `
+        <div class="dm">
+        <span class="profile_pic">
+        <img loading="eager" src=${item.profile_pic} alt="profile image">
+        </span>
+        
+        <span class="profile_detail">
+        <h4 class="name">${item.contact_name}</h4>
+        <span class="msg_info">
+        <img src="" alt="">
+        <p class="dm_msg">lol na my camp commandant</p>
+        </span>
+        </span>
+        
+        <span class="timestamp">
+        <p class="day_date">Yesterday</p>
+        <p class="currenttime">
+        <span class="today">today</span> @ <span class="time">8:20</span> <span class="pm">PM</span>
+        </p>
+        </span>
+        </div>`
+    });
+    
+    displayContacts = displayContacts.join("");
+    
+    
+    // looping it to make them many enough for this project
+    let conNum = 0;
+    
+    while (conNum < 3) {
+        message.innerHTML += displayContacts;
+        conNum++;
+    }
+}
+
+window.addEventListener("DOMContentLoaded", loadContact);
+
+
 const openAdd = document.querySelector(".open");
 const paint = document.querySelector(".paint");
 const receipt = document.querySelector(".receipt");
