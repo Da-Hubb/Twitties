@@ -12,214 +12,244 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- the display before content load -->
-    <div class="overlay">
-        <h1 class="overlay_head">Twitties</h1>
-        <small class="creator">
-            <p class="producer">
-                <a href="mailto: josemariaofurm@gmail.com" target="_blank">
-                    Da-Hubb
-                </a>
-            </p>
-        </small>
-    </div>
 
-    <!-- the header -->
-    <header class="superhero">
-        <!-- hero -->
-        <section class="hero">
-            <h1 class="title">Twitties</h1>
+    <div class="wrapper">
+        <header class="hero">
+            <section class="hero_header">
+                <h1 class="hero_title">
+                    Twitties
+                </h1>
     
-            <div class="connectivities">
-                <!-- single connect -->
-                <div class="connect">
-                    <img src="assets/icons8-wi-fi-96.png" alt="home" loading="eager">
-                </div>
+                <div class="head_icons">
+                    <div class="icon">
+                        <img src="assets/icons8-wi-fi-96.png" alt="wi-fi" loading="lazy">
+                    </div>
     
-                 <!-- single connect -->
-                 <div class="connect">
-                    <img src="assets/icons8-sun-100.png" alt="signal" loading="eager">
-                </div>
+                    <div class="icon">
+                        <img src="assets/icons8-sun-100.png" id="bright" alt="light-up" loading="lazy">
+                    </div>                
     
-                 <!-- single connect -->
-                 <div class="connect">
-                    <img src="assets/icons8-search-100.png" alt="home" loading="eager">
-                </div>
+                    <div class="icon">
+                        <img src="assets/icons8-search-100.png" alt="wi-fi" loading="lazy">
+                    </div>
     
-                 <!-- single connect -->
-                 <div class="connect">
-                    <img src="assets/icons8-compact-camera-100.png" alt="home" loading="eager">
-                </div>
+                    <div class="icon">
+                        <img src="assets/icons8-compact-camera-100.png" alt="wi-fi" loading="lazy">
+                    </div>
     
-                 <!-- single connect -->
-                 <div class="connect">
-                     <img src="assets/icons8-menu-vertical-100.png" alt="home" loading="eager">
-                     <!-- menu navigation on click -->
-                    <nav class="menunav">
-                        <ul class="links">
-                            <li class="firstmenu">Settings</li>
-                            <li class="firstmenu">Message Scheduler</li>
-                            <li class="firstmenu">Auto Reply</li>
-                            <li class="firstmenu">Restart Twitties</li>
-                            <li class="firstmenu">Message a number</li>
-                            <li class="firstmenu">Ask for Assistance</li>
-                            <li class="firstmenu">Mass Message Sender</li>
-                            <li class="firstmenu">New group</li>
-                            <li class="firstmenu">New broadcast</li>
-                            <li class="firstmenu">Linked Devices</li>
-                            <li class="firstmenu">Starred Messages</li>
-                            <li class="firstmenu">My Settings</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </section>
-
-        <!-- subhero -->
-        <div class="subherohold">
-            
-            <section class="subhero">
-                <div class="community sub">
-                    <img loading="eager" src="assets/icons8-people-100.png" alt="community">
-                </div>
-    
-                <div class="sub text-sub">
-                    <h3 class="sub-title">Chats</h3>
-                    <span class="num_of_msg">3</span>
-                </div>
-    
-                <div class="sub text-sub">
-                    <h3 class="sub-title">Groups</h3>
-                    <span class="num_of_msg">3</span>
-                </div>
-    
-                <div class="sub text-sub">
-                    <h3 class="sub-title">Status</h3>
-                    <span class="num_of_msg">3</span>
-                </div>
-    
-                <div class="sub text-sub">
-                    <h3 class="sub-title">Calls</h3>
-                    <span class="num_of_msg">3</span>
+                    <div class="icon">
+                        <img src="assets/icons8-menu-vertical-100.png" alt="wi-fi" loading="lazy">
+                    </div>
                 </div>
             </section>
     
-        </div>
-    </header>
-
+            <section class="currentpage">
+                <div class="community page">
+                    <img src="assets/icons8-people-100.png" alt="community" loading="lazy">
+                </div>
     
-    <!-- the chat body -->
-    <main class="display_msg">
-        <!-- the community page -->
-        <section class="communities page">
-            <img src="assets/community.svg" alt="community" loading="lazy">
+                <div class="page chat pageactive" data-id="chat">
+                    <h4 class="chat_title">Chat</h4>
+                    <span class="num invisible">4</span>
+                </div>
+    
+                <div class="page group" data-id="group">
+                    <h4 class="group_title">Group</h4>
+                    <span class="num invisible">4</span>
+                </div>
+    
+                <div class="page my_status" data-id="my_status">
+                    <h4 class="status_title">Status</h4>
+                    <span class="num invisible">4</span>
+                </div>
+    
+                <div class="page calls" data-id="calls">
+                    <h4 class="call_title">Calls</h4>
+                    <span class="num invisible">4</span>
+                </div>
+            </section>
+        </header>
 
-            <h2 class="comm_title">
-                Introducing communities
-            </h2>
+        <main class="display">
 
-            <p class="comm_detail">
-                Easily organise your related groups and send announcements. Now, your communities, like neighborhoods or schools, can have their own space.
-            </p>
-        </section>
+            <section class="major_display">
 
-        <!-- personal message page -->
-        <section class="page messages">
-            <!-- single message -->
-            <!-- <div class="dm">
-                <span class="profile_pic">
-                    <img loading="eager" src="assets/stephanie.png" alt="profile image">
-                </span>
+                <div class="chat_div box">
 
-                <span class="profile_detail">
-                    <h4 class="name">Stephanie</h4>
-                    <span class="msg_info">
-                        <img src="" alt="">
-                        <p class="dm_msg">lol na my camp commandant</p>
+                    <div class="major_head">
+                        <h3 class="major_title">Chats</h3>
+    
+                        <img src="assets/whatsapp.svg" alt="whatsapp">
+    
+                        <img src="assets/icons8-menu-vertical-100.png" alt="menu">
+                    </div>
+
+                    <div class="searchbar">
+                        <input type="text" name="search" id="search" placeholder="Search or start new chat">
+                        <img src="assets/icons8-search-100.png" alt="search icon" class="icon_search">
+                    </div>
+
+                    <div class="archive">
+                        <img src="assets/icons8-delete-64.png" alt="bin">
+                        <p class="archive_text">Archived</p>
+                        <p class="num_archive">3</p>
+                    </div>
+
+                    <section class="messages">
+                        <div class="dm">
+                            <span class="profile_pic">
+                                <img loading="eager" src="assets/anisha.png" alt="profile image" class="profile_image">
+                            </span>
+                            
+                            <section class="msg_detail">
+                                <span class="name_time">
+                                    <h3 class="name">Anisha</h3>
+                                    <p class="time">15:23</p>
+                                </span>
+
+                                <span class="utilities">
+                                    <!-- the tick both for video and the rest -->
+                                    <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
+
+                                    <!-- the message -->
+                                    <p class="text_message">Yes I got what you sent, thanks..</p>
+
+                                    <!-- the mute -->
+                                    <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
+
+                                    <!-- the number of messages -->
+                                    <p class="num_messages">5</p>
+                                </span>
+                            </section>
+                        </div>
+                        
+                    </section> 
+                </div>
+
+                <div class="group_div box">
+                    <div class="dm">
+                        <span class="profile_pic">
+                            <img loading="eager" src="assets/anisha.png" alt="profile image" class="profile_image">
+                        </span>
+                        
+                        <section class="msg_detail">
+                            <span class="name_time">
+                                <h3 class="name">Anisha group</h3>
+                                <p class="time">15:23</p>
+                            </span>
+
+                            <span class="utilities">
+                                <!-- the tick both for video and the rest -->
+                                <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
+
+                                <!-- the message -->
+                                <p class="text_message">Yes I got what you sent, thanks..</p>
+
+                                <!-- the mute -->
+                                <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
+
+                                <!-- the number of messages -->
+                                <p class="num_messages">5</p>
+                            </span>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="status_div box">
+                    <div class="dm">
+                        <span class="profile_pic">
+                            <img loading="eager" src="assets/anisha.png" alt="profile image" class="profile_image">
+                        </span>
+                        
+                        <section class="msg_detail">
+                            <span class="name_time">
+                                <h3 class="name">Anisha status</h3>
+                                <p class="time">15:23</p>
+                            </span>
+
+                            <span class="utilities">
+                                <!-- the tick both for video and the rest -->
+                                <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
+
+                                <!-- the message -->
+                                <p class="text_message">Yes I got what you sent, thanks..</p>
+
+                                <!-- the mute -->
+                                <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
+
+                                <!-- the number of messages -->
+                                <p class="num_messages">5</p>
+                            </span>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="calls_div box">
+                    <div class="dm">
+                        <span class="profile_pic">
+                            <img loading="eager" src="assets/anisha.png" alt="profile image" class="profile_image">
+                        </span>
+                        
+                        <section class="msg_detail">
+                            <span class="name_time">
+                                <h3 class="name">calls</h3>
+                                <p class="time">15:23</p>
+                            </span>
+
+                            <span class="utilities">
+                                <!-- the tick both for video and the rest -->
+                                <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
+
+                                <!-- the message -->
+                                <p class="text_message">Yes I got what you sent, thanks..</p>
+
+                                <!-- the mute -->
+                                <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
+
+                                <!-- the number of messages -->
+                                <p class="num_messages">5</p>
+                            </span>
+                        </section>
+                    </div>
+                </div>
+                
+            </section>
+
+            <section class="message_view">
+
+                <article class="personInfo">
+                    <span class="personInfo_img">
+                        <img src="assets/richard.png" alt="" loading="eager">
                     </span>
-                </span>
 
-                <span class="timestamp">
-                    <p class="day_date">Yesterday</p>
-                    <p class="currenttime">
-                        <span class="today">today</span> @ <span class="time">8:20</span> <span class="pm">PM</span>
-                    </p>
-                </span>
-            </div> -->
+                    <span class="personInfo_detail">
+                        <h3 class="person_name">Richard Cypher</h3>
+                        <p class="status">Online</p>
+                    </span>
+                    
+                    <span class="initiate_contact">
+                        <img src="assets/phone-call-svgrepo-com (1).svg" alt="" loading="eager">
+                        <img src="assets/video-svgrepo-com.svg" alt="" loading="eager">
+                        <img src="assets/icons8-search-100.png" alt="">
+                    </span>
+                </article>
 
-            <!-- <div class=" footstool chat">
-                <small>
-                    <p class="info">
-                        Tap and hold on a chat for more options
-                    </p>
-                </small>
-        
-                <div class="horizontal"></div>
-        
-                <small class="security">
-                    <img src="assets/icons8-lock-64.png" alt="lock">
-                    <p class="brief">
-                        Your personal messages are <a href="#" targt="_blank" class="encrypt">end-to-end encrypted</a>
-                    </p>
-                </small> -->
-            </div>
-        </section>
+                <article class="text_display_area">
 
-        <!-- the group page -->
-        <section class="group page">
-            <!-- <div class="group footstool">
-                <small>
-                    <p class="info">
-                        Tap and hold on a chat for more options
-                    </p>
-                </small>
-        
-                <div class="horizontal"></div>
-        
-                <small class="security">
-                    <img src="assets/icons8-lock-64.png" alt="lock">
-                    <p class="brief">
-                        Your personal messages are <a href="#" targt="_blank" class="encrypt">end-to-end encrypted</a>
-                    </p>
-                </small>
-            </div> -->
-        </section>
+                </article>
 
-        <!-- the status page -->
-        <section class="status page">
-        </section>
+                <article class="user_inputs">
+                    <!-- the emojis -->
+                    <img src="assets/icons8-sun-100.png" alt="">
+                    <img src="assets/clip-svgrepo-com.svg" alt="">
+                    <textarea name="user_message" id="user_message" cols="30" rows="1" class="textarea"></textarea>
+                    <img src="assets/record1-svgrepo-com.svg" alt="">
+                </article>
+            </section>
 
-        <!-- the call page -->
-        <section class="calls page">
-            <!-- <div class="call">
-    
-                <div class="horizontal"></div>
-        
-                <small class="security">
-                    <img src="assets/icons8-lock-64.png" alt="lock">
-                    <p class="brief">
-                        Your personal calls are <a href="#" targt="_blank" class="encrypt">end-to-end encrypted</a>
-                    </p>
-                </small>
-            </div> -->
-        </section>
+        </main>
 
-
-    </main>
-
-    <!-- create the add buttons -->
-    <section class="add_on">
-        <div class="add open"><img src="assets/setting.svg" alt="setting"></div>
-        <div class="add paint"><img src="assets/icons8-paint-brush-100.png" alt=""></div>
-        <div class="add receipt"><img src="assets/icons8-activity-history-100.png" alt=""></div>
-        <div class="add clock"><img src="assets/icons8-alarm-clock-80.png" alt=""></div>
-        <div class="add chat"><img src="assets/icons8-activity-history-100.png" alt=""></div>
-        <div class="add"><img src="assets/icons8-barber-scissors-48.png" alt=""></div>
-        <div class="add"><img src="assets/icons8-pencil-drawing-100.png" alt=""></div>
-        <div class="add"><img src="assets/icons8-compact-camera-100.png" alt=""></div>
-        <div class="add"><img src="assets/icons8-delete-64.png" alt=""></div>
-        <div class="add"><img src="" alt=""></div>
-    </section>
+    </div>
 
 </body>
 </html>
