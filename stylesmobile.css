@@ -42,7 +42,7 @@ body {
     max-width: 800px;
     border: solid 1px var(--light-dark);
     border-radius: 10px;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 /* hero styling */
