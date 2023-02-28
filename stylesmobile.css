@@ -5,8 +5,8 @@
     --teal-green-dark: #075E54;
     --blue: #34B7F1;
     --light-green: #25D366;
-    --display: rgb(15, 77, 66);
-    --light-dark: rgb(4, 61, 35);
+    --display: rgb(4, 30, 34);
+    --light-dark: rgb(6, 22, 19);
     --gray: rgb(161, 145, 145);
 }
 
@@ -43,6 +43,7 @@ body {
     border: solid 1px var(--light-dark);
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
 }
 
 /* hero styling */
@@ -132,9 +133,12 @@ body {
     top: 0;
     left: 0;
     transition: .3s;
-    background-color: black;
     overflow: hidden;
     overflow-y: scroll;
+}
+
+.chat_div::-webkit-scrollbar {
+    display: none;
 }
 
 .major_head {
@@ -317,8 +321,205 @@ body {
     background-size: cover;
     position: relative;
 }
+
+/* personal information */
+.personInfo {
+    justify-content: flex-start;
+    height: 50px;
+}
+
+.personInfo span {
+    height: 100%;
+}
+
+.personInfo img {
+    width: 40px;
+}
+
+.personInfo_img {
+    width: 10%;
+    display: grid;
+    place-items: center;
+}
+
+.personInfo_img img {
+    display: block;
+}
+
+.personInfo_detail {
+    width: 50%;
+    margin-left: 10px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.person_name {
+    font-weight: 500;
+}
+
+.status {
+    font-size: 11px;
+    color: var(--blue);
+    margin-top: 5px;
+}
+
+.initiate_contact {
+    flex-flow: nowrap row;
+    width: 30%;
+    justify-content: flex-end;
+}
+
+.initiate_contact img {
+    width: 25px;
+    margin-right: 20px;
+}
+
+/* text display area */
+.text_display_area {
+    width: 100%;
+    height: calc(100% - 70px);
+}
+
+/* user inputs */
+.user_inputs {
+    background-color: black;
+    width: 100%;
+    min-height: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.user_inputs img {
+    width: 20px;
+    justify-content: flex-start;
+    margin-left: 25px;
+}
+
+/********* contactList button ****/
+.addNewChat {
+    background-color: var(--light-dark);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+.addNewChat img {
+    width: 50%;
+}
+/* contact list button */
+
+/* contact list */
+.contactList {
+    width: 100%;
+    height: 100%;
+    background-color: var(--display);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transform: translateX(100%);
+    transition: .9s;
+    color: white;
+}
+
+.selection {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--light-dark);
+    padding: 2px 10px;
+    height: 45px;
+}
+
+.selection img {
+    width: 25px;
+}
+
+.selection img:nth-of-type(2) {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.selecting {
+    font-size: 15px;
+    margin-left: 19px;
+}
+
+.select_title {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.digits {
+    font-size: 11px;
+}
+
+.contactList_display {
+    height: calc(100% - 45px);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.indi {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 10px;
+}
+
+.indi:active {
+    background-color: var(--teal-green-trans);
+}
+
+.indi_img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.indi_pic {
+    width: 100%;
+    object-fit: cover;
+}
+
+.indi_name {
+    margin-left: 10px;
+}
+
+.indi_name .quote, .contactList_display .twities {
+    color: rgb(218, 205, 205);
+    font-size: 13px;
+}
+
+.contactList_display .twities {
+    margin-left: 20px;
+}
+
 /******************** media query **********/
 @media screen and (max-width: 375px) {
+    
+    .addNewChat {
+        overflow: visible;
+        width: 50px;
+        height: 50px;
+    }
+    /* add new chat here */
+
     .message_view {
         position: absolute;
         width: 100%;
@@ -424,85 +625,11 @@ body {
     }
 }
 
-/* personal information */
-.personInfo {
-    justify-content: flex-start;
-    height: 50px;
-}
-
-.personInfo span {
-    height: 100%;
-}
-
-.personInfo img {
-    width: 40px;
-}
-
-.personInfo_img {
-    width: 10%;
-    display: grid;
-    place-items: center;
-}
-
-.personInfo_img img {
-    display: block;
-}
-
-.personInfo_detail {
-    width: 50%;
-    margin-left: 10px;
-    font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.person_name {
-    font-weight: 500;
-}
-
-.status {
-    font-size: 11px;
-    color: var(--blue);
-    margin-top: 5px;
-}
-
-.initiate_contact {
-    flex-flow: nowrap row;
-    width: 30%;
-    justify-content: flex-end;
-}
-
-.initiate_contact img {
-    width: 25px;
-    margin-right: 20px;
-}
-
-/* text display area */
-.text_display_area {
-    width: 100%;
-    height: calc(100% - 70px);
-}
-
-/* user inputs */
-.user_inputs {
-    background-color: black;
-    width: 100%;
-    min-height: 30px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-.user_inputs img {
-    width: 20px;
-    justify-content: flex-start;
-    margin-left: 25px;
-}
-
-
-
 /* class to add onclick */
+.showtrans {
+    transform: translateX(0%);
+}
+
 .glued {
     position: fixed;
     top: 0;
@@ -525,6 +652,10 @@ body {
 .pageactive {
     color: yellowgreen;
     border-bottom: yellowgreen solid 2px;
+}
+
+.bggreen {
+    background-color: var(--light-green);
 }
 
 .invisible {
