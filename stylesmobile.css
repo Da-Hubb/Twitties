@@ -318,7 +318,7 @@ body {
     position: relative;
 }
 /******************** media query **********/
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 375px) {
     .message_view {
         position: absolute;
         width: 100%;
