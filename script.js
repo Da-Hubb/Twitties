@@ -80,6 +80,7 @@ const contact = [
 
 
 
+
 /* elements needed */
 const pages = document.querySelectorAll(".box");// diferent pages
 
@@ -93,6 +94,8 @@ const messages = document.querySelector(".messages");// where the dm i am dmming
 
 const openContact = document.querySelector(".addNewChat"); // the openchat fixed at the bottom
 
+const openContactDesktop = document.querySelector(".major_title"); // initiate contact list for the desktop view
+
 const closeContact = document.getElementById("return_btn");
 
 const contactList = document.querySelector(".contactList");// the contact list
@@ -103,11 +106,13 @@ const totalContact = document.querySelector(".num_of_contact");// show the total
 
 const encryptPage = document.querySelector(".encrypt_page");// the encrypt information
 
-const openEncrypt = document.querySelector(".encryption");// openencrypt button
+const openEncrypt = document.querySelectorAll(".encryption");// openencrypt button
 
-const closeEncrypt = document.querySelector(".encrypt_close");// close the encrypt message
+const closeEncrypt = document.querySelectorAll(".encrypt_close");// close the encrypt message
 
 const dmHolder = document.querySelector(".dm_holder");// this hold every person we have contacted
+
+const dm = dmHolder.querySelector(".dm"); // single dm
 
 const msg_view = document.querySelector(".message_view");// the area where our messages go in
 
@@ -118,6 +123,7 @@ const inputText = document.getElementById("user_message");// the textarea
 const send = document.getElementById("send");// the send button
 
 let textDisplayArea = document.querySelector(".text_display_area");
+
 
 
 
@@ -134,39 +140,41 @@ inputText.addEventListener("keyup", (e) => {
 
 })// function to control the height of my input bar
 
-closeEncrypt.addEventListener("click", () => {
+closeEncrypt.forEach(closer => {
+    closer.addEventListener("click", () => {
     close (encryptPage, "showEncrypt");
-})
+    })
+})// this will close the encrypt page
 
-openEncrypt.addEventListener("click", (e)  => {
-    e.preventDefault();
-    open (encryptPage, "showEncrypt")
+openEncrypt.forEach(openner => {
+    openner.addEventListener("click", (e) => {
+        e.preventDefault();
+        open (encryptPage, "showEncrypt")
+    })
 })// this will open the encrypt page
 
-const showAvailableContact = () => {
-    
-    let randomNum = Math.floor(Math.random() * 200);
-    
-    let contactNum = contact.length;
-    
+const showAvailableContact = (array) => {
+    let totalCon = 0; // let total contact be zero;
 
-    for(x = 0; x < randomNum; x++) {
-        let ranConNum = Math.floor(Math.random() * contactNum);
-        
-        totalContact.textContent = x;
+    let conList = array.map(item => {
+        totalCon++;
 
-        contactListDisplay.innerHTML += `
+        return `
         <div class="indi">
-        <picture class="indi_img">
-                <img src=${contact[ranConNum].dp} alt="people" loading="lazy" class="indi_pic">
-                </picture>
-    
-                <span class="indi_name">
-                <h5>${contact[ranConNum].naming}</h5>
-                <p class="quote">${contact[ranConNum].quote}</p>
+            <picture class="indi_img">
+                <img src=${item.dp} alt="people" loading="lazy" class="indi_pic">
+            </picture>
+            <span class="indi_name">
+                <h5>${item.naming}</h5>
+                <p class="quote">${item.quote}</p>
             </span>
         </div>`
-    }
+    })// conList simply means contact list
+
+    totalContact.textContent = totalCon; // total number of contacts
+
+    contactListDisplay.innerHTML += conList.join("");
+    /*** at this juncture the display contacts is done */
 
     const singleDMS = document.querySelectorAll(".indi");
 
@@ -176,68 +184,38 @@ const showAvailableContact = () => {
         dm.addEventListener("click", () => {
             open (msg_view, "showmsgview");
             close (contactList, "showtrans");
+            textDisplayArea.innerHTML = "";
         })
 
         singleChat(dm);
     })
     
-    send.addEventListener("click", (e) => {
+
+    // every single thing that should happen when i click on the send button
+    send.addEventListener("click", () => {
         let image = headOfMsgDisplay.querySelector(".personInfo_img img").src;
 
         let personName = headOfMsgDisplay.querySelector(".person_name").textContent;
 
         let text = inputText.value;
-    
-        if (text == "") {
-            console.log("null");
-        }else {
-            textDisplayArea.innerHTML += `
-            <!-- the user or the sender of the text -->
-            <section class="user">
-                <p class="user_text">
-                    ${text}
-                </p>
-            </section>`
 
-             // adding to the box of the contacted
-        dmHolder.classList.remove("hide");
+        // let lastmsg = text.trim().slice(0, 20);
 
-        dmHolder.innerHTML += `
-        <div class="dm">
-            <picture class="profile_pic">
-                <img loading="eager" src="${image}" alt="profile image" class="profile_image">
-            </picture>
-
-            <section class="msg_detail">
-                <span class="name_time">
-                    <h3 class="name">${personName}</h3>
-                    <p class="time">15:23</p>
-                </span>
-
-                <span class="utilities">
-                    <!-- the tick both for video and the rest -->
-                    <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
-
-                    <!-- the message -->
-                    
-                    <p class="text_message">Yes I got what you sent, thanks..</p>
-                    <!-- the mute -->
-                    <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
         
-                    <!-- the number of messages -->
-                    <p class="num_messages">5</p>
-                </span>
-
-            </section>
-        </div>`
+        if (text == "") 
+        {
+            return;
         }
-
-       
+        else 
+        {
+            Update(text, image, personName);
+        }
     
         inputText.value = "";
     
         inputText.style.height = `15px`;
 
+        returnMsg();
     })// send the text on the the input bar
 
 }// show available contact
@@ -247,13 +225,16 @@ closeContact.addEventListener("click", () => {
 })// close contact list
 
 openContact.addEventListener("click", () => {
-    // contactList.classList.add("showtrans");
     open (contactList, "showtrans");
-})// show contact list
+})// show contact list button for mobile
+
+openContactDesktop.addEventListener("click", () => {
+    open (contactList, "showtrans");
+})// show contaact list button for desktop
 
 window.addEventListener("DOMContentLoaded", () => {
     changePage(-100);
-    showAvailableContact();
+    showAvailableContact(contact);
 })// window on dom content loaded
 
 switchpage.forEach(activepage => {
@@ -357,3 +338,68 @@ const singleChat = (elem) => {
             })
         } )
 }// when message box is open
+
+
+function Update (txt, img, Name) {
+    textDisplayArea.innerHTML += `
+            <section class="user">
+                <p class="user_text">
+                    ${txt}
+                </p>
+            </section>`// this is for the user or the owner of the account on the social media
+
+            dmHolder.classList.remove("hide"); // the screen for the contacted pesonnel
+
+            dmHolder.innerHTML += `
+            <div class="dm">
+                <picture class="profile_pic">
+                    <img loading="eager" src="${img}" alt="profile image" class="profile_image">
+                </picture>
+
+                <section class="msg_detail">
+                    <span class="name_time">
+                        <h3 class="name">${Name}</h3>
+                        <p class="time">15:23</p>
+                    </span>
+
+                    <span class="utilities">
+                        <!-- the tick both for video and the rest -->
+                        <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
+
+                        <!-- the message -->
+                        
+                        <p class="text_message">${txt}...</p>
+                        <!-- the mute -->
+                        <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
+            
+                        <!-- the number of messages -->
+                        <p class="num_messages">5</p>
+                    </span>
+
+                </section>
+            </div>`
+}
+
+const returnMsg = () => {
+    let time = Math.floor(Math.random() * 5000);
+    
+    text = "Online";
+
+    let stats = headOfMsgDisplay.querySelector(".status");
+    
+    stats.textContent = "typing..."
+
+    setTimeout(() => {
+        stats.textContent = text;
+
+        textDisplayArea.innerHTML += `
+            <section class="receiver">
+                <p class="receiver_text">
+                    Hello, and welcome to you!!,
+                    i am not fully functional at the moment.
+                    But very soon i will. Love you.
+                    Hope to see you again at the end of this project.
+                </p>
+            </section>`
+    }, time);
+}
