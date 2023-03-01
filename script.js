@@ -99,8 +99,23 @@ const contactList = document.querySelector(".contactList");// the contact list
 
 const contactListDisplay = document.querySelector(".contactList_display");// availableContacts
 
-const totalContact = document.querySelector(".num_of_contact");
+const totalContact = document.querySelector(".num_of_contact");// show the total num of my contacts
 
+const encryptPage = document.querySelector(".encrypt_page");
+
+const openEncrypt = document.querySelector(".encryption");
+
+const closeEncrypt = document.querySelector(".encrypt_close");
+
+
+closeEncrypt.addEventListener("click", () => {
+    close (encryptPage, "showEncrypt");
+})
+
+openEncrypt.addEventListener("click", (e)  => {
+    e.preventDefault();
+    open (encryptPage, "showEncrypt")
+})// this will open the encrypt page
 
 const showAvailableContact = () => {
     
@@ -116,11 +131,11 @@ const showAvailableContact = () => {
 
         contactListDisplay.innerHTML += `
         <div class="indi">
-            <picture class="indi_img">
+        <picture class="indi_img">
                 <img src=${contact[ranConNum].dp} alt="people" loading="lazy" class="indi_pic">
-            </picture>
+                </picture>
     
-            <span class="indi_name">
+                <span class="indi_name">
                 <h5>${contact[ranConNum].naming}</h5>
                 <p class="quote">${contact[ranConNum].quote}</p>
             </span>
@@ -129,11 +144,12 @@ const showAvailableContact = () => {
 }// show available contact
 
 closeContact.addEventListener("click", () => {
-    contactList.classList.remove("showtrans");
+    close (contactList, "showtrans");
 })// close contact list
 
 openContact.addEventListener("click", () => {
-    contactList.classList.add("showtrans");
+    // contactList.classList.add("showtrans");
+    open (contactList, "showtrans");
 })// show contact list
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -145,8 +161,12 @@ switchpage.forEach(activepage => {
     activepage.addEventListener("click", (e) => {
         let data = e.currentTarget.dataset.id;
 
-        if (data == "community") changePage(0);
+        showOpenContact(data);
+        
+        if (data == "community") {
+            changePage(0);
 
+        }
         else if (data == "chat") changePage(-100);
         
         else if (data == "group") changePage(-200);
@@ -188,3 +208,16 @@ const changePage = (num) => {
         num += 100;
     })
 }// fuction to change page 
+
+const open = (element, klas) => {
+    element.classList.add(`${klas}`)
+}// function for any open button that adds class
+
+const close = (element, klas) => {
+    element.classList.remove(`${klas}`);
+}// functions for any close button that removes class
+
+const showOpenContact = (d) => {
+    if (d == "chat") openContact.style.display = "grid";
+    else openContact.style.display = "none";
+}

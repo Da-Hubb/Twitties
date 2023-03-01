@@ -132,7 +132,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    transition: .3s;
+    transition: .3s .2s ease-out;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -225,6 +225,51 @@ body {
     overflow: hidden;
     overflow-y: auto;
 }
+
+/* encrypt messages */
+.encrypt_page {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: var(--light-dark);
+    border-radius: 20px 20px 0 0;
+    z-index: 10;
+    padding: 10px 10px 0 10px;
+    color: white;
+    transition: .2s 1s ease-in-out;
+}
+
+.encrypt_page .encrypt_close {
+    width: 25px;
+}
+
+
+.imp_info {
+    margin-top: 80px;
+    display: block;
+    border-top: 1px gray dotted;
+    padding: 10px 0;
+}
+
+.imp_info .about {
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+}
+
+.imp_info .about a {
+    text-decoration: none;
+    color: var(--light-green);
+}
+
+.imp_info .about img {
+    width: 20px;
+}
+
 
 ::-webkit-scrollbar {
     width: 5px;
@@ -426,11 +471,11 @@ body {
     height: 100%;
     background-color: var(--display);
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -100%;
+    left: -100%;
     z-index: 10;
-    transform: translateX(100%);
-    transition: .9s;
+    transform: scale(0);
+    transition: .5s 1s ease-in-out;
     color: white;
 }
 
@@ -597,7 +642,7 @@ body {
 
     .hero_title {
         display: block;
-        color: var(--blue);
+        color: var(--gray);
         font-size: 7vw;
     }
 
@@ -615,6 +660,8 @@ body {
     .wrapper {
         height: 100%;
         width: 100%;
+        overflow: hidden;
+        border-radius: 0;
     }
 
     body {
@@ -625,8 +672,13 @@ body {
 }
 
 /* class to add onclick */
+.showEncrypt {
+    bottom: 0;
+}
 .showtrans {
-    transform: translateX(0%);
+    transform: scale(1);
+    left: 0;
+    top: 0;
 }
 
 .glued {
