@@ -111,12 +111,28 @@ const dmHolder = document.querySelector(".dm_holder");// this hold every person 
 
 const msg_view = document.querySelector(".message_view");// the area where our messages go in
 
-
 const headOfMsgDisplay = document.querySelector(".personInfo");// header of the message view
 
+const inputText = document.getElementById("user_message");// the textarea 
+
+const send = document.getElementById("send");// the send button
+
+let textDisplayArea = document.querySelector(".text_display_area");
 
 
 
+inputText.addEventListener("keyup", (e) => {
+    inputText.style.height = "auto";
+
+    let scHeight = e.target.scrollHeight;
+    
+    let height = scHeight;
+
+    if (height >= 90) height = 90;
+
+    inputText.style.height = `${height}px`;
+
+})// function to control the height of my input bar
 
 closeEncrypt.addEventListener("click", () => {
     close (encryptPage, "showEncrypt");
@@ -161,11 +177,68 @@ const showAvailableContact = () => {
             open (msg_view, "showmsgview");
             close (contactList, "showtrans");
         })
-        
+
         singleChat(dm);
-
     })
+    
+    send.addEventListener("click", (e) => {
+        let image = headOfMsgDisplay.querySelector(".personInfo_img img").src;
 
+        let personName = headOfMsgDisplay.querySelector(".person_name").textContent;
+
+        let text = inputText.value;
+    
+        if (text == "") {
+            console.log("null");
+        }else {
+            textDisplayArea.innerHTML += `
+            <!-- the user or the sender of the text -->
+            <section class="user">
+                <p class="user_text">
+                    ${text}
+                </p>
+            </section>`
+
+             // adding to the box of the contacted
+        dmHolder.classList.remove("hide");
+
+        dmHolder.innerHTML += `
+        <div class="dm">
+            <picture class="profile_pic">
+                <img loading="eager" src="${image}" alt="profile image" class="profile_image">
+            </picture>
+
+            <section class="msg_detail">
+                <span class="name_time">
+                    <h3 class="name">${personName}</h3>
+                    <p class="time">15:23</p>
+                </span>
+
+                <span class="utilities">
+                    <!-- the tick both for video and the rest -->
+                    <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
+
+                    <!-- the message -->
+                    
+                    <p class="text_message">Yes I got what you sent, thanks..</p>
+                    <!-- the mute -->
+                    <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
+        
+                    <!-- the number of messages -->
+                    <p class="num_messages">5</p>
+                </span>
+
+            </section>
+        </div>`
+        }
+
+       
+    
+        inputText.value = "";
+    
+        inputText.style.height = `15px`;
+
+    })// send the text on the the input bar
 
 }// show available contact
 
@@ -254,36 +327,7 @@ const singleChat = (elem) => {
         let chatProfilePic = elem.querySelector(".indi_pic").src;
         
         elem.addEventListener("click", (e) => {
-            dmHolder.classList.remove("hide");
 
-            dmHolder.innerHTML += `
-            <div class="dm">
-                <picture class="profile_pic">
-                    <img loading="eager" src="${chatProfilePic}" alt="profile image" class="profile_image">
-                </picture>
-    
-                <section class="msg_detail">
-                    <span class="name_time">
-                        <h3 class="name">${chatName}</h3>
-                        <p class="time">15:23</p>
-                    </span>
-
-                    <span class="utilities">
-                        <!-- the tick both for video and the rest -->
-                        <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
-
-                        <!-- the message -->
-                        
-                        <p class="text_message">Yes I got what you sent, thanks..</p>
-                        <!-- the mute -->
-                        <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
-            
-                        <!-- the number of messages -->
-                        <p class="num_messages">5</p>
-                    </span>
-
-                </section>
-            </div>`
 
             headOfMsgDisplay.innerHTML = `
             <span class="return">
@@ -312,4 +356,4 @@ const singleChat = (elem) => {
                 close (msg_view, "showmsgview")
             })
         } )
-}
+}// when message box is open
