@@ -300,10 +300,13 @@ body {
 
 .dm .profile_pic {
     width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .dm .profile_pic .profile_image {
     width: 100%;
+    object-fit: cover;
 }
 
 .msg_detail {
@@ -555,8 +558,45 @@ body {
     margin-left: 20px;
 }
 
+
+/* message return */
+.personInfo .return {
+    display: none;
+}
+
 /******************** media query **********/
 @media screen and (max-width: 375px) {
+
+    .personInfo .return {
+        display: block;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .personInfo .return:active {
+        background-color: var(--teal-green-trans);
+        border-radius: 30px;
+    }
+
+    .personInfo .return img {
+        width: 100%;
+    }
+
+    .initiate_contact img {
+        margin-right: 10px;
+    }
+
+    .personInfo_detail {
+        margin-left: 20px;
+    }
+        
+    /* .personInfo {
+        justify-content: flex-start;
+        height: 50px;
+        background-color: white;
+    } */
     
     .addNewChat {
         overflow: visible;
@@ -569,6 +609,9 @@ body {
         position: absolute;
         width: 100%;
         transform: translateX(100%);
+        transition: .4s;
+        top: 0;
+        background-image: linear-gradient(180deg, black, transparent), url(assets/mobiledark.jpg);
     }
 
     /* messsage view starts */
@@ -656,6 +699,10 @@ body {
         justify-content: space-evenly;
         background-color: var(--light-dark);
     }
+
+    .display {
+        position: unset;
+    }
     
     .wrapper {
         height: 100%;
@@ -672,9 +719,15 @@ body {
 }
 
 /* class to add onclick */
+.showmsgview {
+    transform: translateX(0%);
+    z-index: 10;
+}
+
 .showEncrypt {
     bottom: 0;
 }
+
 .showtrans {
     transform: scale(1);
     left: 0;

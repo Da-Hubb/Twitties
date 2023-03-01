@@ -101,11 +101,21 @@ const contactListDisplay = document.querySelector(".contactList_display");// ava
 
 const totalContact = document.querySelector(".num_of_contact");// show the total num of my contacts
 
-const encryptPage = document.querySelector(".encrypt_page");
+const encryptPage = document.querySelector(".encrypt_page");// the encrypt information
 
-const openEncrypt = document.querySelector(".encryption");
+const openEncrypt = document.querySelector(".encryption");// openencrypt button
 
-const closeEncrypt = document.querySelector(".encrypt_close");
+const closeEncrypt = document.querySelector(".encrypt_close");// close the encrypt message
+
+const dmHolder = document.querySelector(".dm_holder");// this hold every person we have contacted
+
+const msg_view = document.querySelector(".message_view");// the area where our messages go in
+
+
+const headOfMsgDisplay = document.querySelector(".personInfo");// header of the message view
+
+
+
 
 
 closeEncrypt.addEventListener("click", () => {
@@ -141,6 +151,22 @@ const showAvailableContact = () => {
             </span>
         </div>`
     }
+
+    const singleDMS = document.querySelectorAll(".indi");
+
+    singleDMS.forEach (dm => {
+        
+        // for any of the dm is clicked the msgview area will open
+        dm.addEventListener("click", () => {
+            open (msg_view, "showmsgview");
+            close (contactList, "showtrans");
+        })
+        
+        singleChat(dm);
+
+    })
+
+
 }// show available contact
 
 closeContact.addEventListener("click", () => {
@@ -220,4 +246,70 @@ const close = (element, klas) => {
 const showOpenContact = (d) => {
     if (d == "chat") openContact.style.display = "grid";
     else openContact.style.display = "none";
+}// function for the open contact button
+
+const singleChat = (elem) => {
+        let chatName = elem.querySelector(".indi_name h5").textContent;
+        
+        let chatProfilePic = elem.querySelector(".indi_pic").src;
+        
+        elem.addEventListener("click", (e) => {
+            dmHolder.classList.remove("hide");
+
+            dmHolder.innerHTML += `
+            <div class="dm">
+                <picture class="profile_pic">
+                    <img loading="eager" src="${chatProfilePic}" alt="profile image" class="profile_image">
+                </picture>
+    
+                <section class="msg_detail">
+                    <span class="name_time">
+                        <h3 class="name">${chatName}</h3>
+                        <p class="time">15:23</p>
+                    </span>
+
+                    <span class="utilities">
+                        <!-- the tick both for video and the rest -->
+                        <img src="assets/icons8-barber-scissors-48.png" alt="delivered seen and arrived" class="delivery">
+
+                        <!-- the message -->
+                        
+                        <p class="text_message">Yes I got what you sent, thanks..</p>
+                        <!-- the mute -->
+                        <img src="assets/icons8-lock-64.png" alt="mute" class="mute">
+            
+                        <!-- the number of messages -->
+                        <p class="num_messages">5</p>
+                    </span>
+
+                </section>
+            </div>`
+
+            headOfMsgDisplay.innerHTML = `
+            <span class="return">
+                <img src="assets/return.png" alt="return">
+            </span>
+
+            <span class="personInfo_img">
+                <img src="${chatProfilePic}" alt="" loading="eager">
+            </span>
+
+            <span class="personInfo_detail">
+                <h3 class="person_name">${chatName}</h3>
+                <p class="status">Online</p>
+            </span>
+            
+            <span class="initiate_contact">
+                <img src="assets/phone-call-svgrepo-com (1).svg" alt="" loading="eager">
+                <img src="assets/video-svgrepo-com.svg" alt="" loading="eager">
+                <img src="assets/icons8-search-100.png" alt="">
+            </span>
+            `
+
+            const closeMsgView = document.querySelector(".personInfo .return");
+            
+            closeMsgView.addEventListener("click", () => {
+                close (msg_view, "showmsgview")
+            })
+        } )
 }
